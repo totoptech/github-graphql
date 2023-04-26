@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/github-graphql/static/js/main.afd6c469.js",
-    "index.html": "/github-graphql/index.html",
-    "main.afd6c469.js.map": "/github-graphql/static/js/main.afd6c469.js.map"
+    "main.js": "/static/js/main.afd6c469.js",
+    "index.html": "/index.html",
+    "main.afd6c469.js.map": "/static/js/main.afd6c469.js.map"
   },
   "entrypoints": [
     "static/js/main.afd6c469.js"
