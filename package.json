@@ -1,6 +1,6 @@
 {
   "homepage": "http://totoptech.github.io/github-graphql",
-  "name": "github-graphql",
+  "name": "github-graphql-example",
   "dependencies": {
     "@apollo/client": "^3.7.12",
     "@emotion/react": "latest",
