@@ -18,7 +18,7 @@ type ListItemProps = {
 const ListItem = ({ title, desc, link, avatar }: ListItemProps) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/github/${link}`);
+    navigate(`/${link}`);
   };
 
   return (
