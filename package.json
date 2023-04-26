@@ -1,4 +1,5 @@
 {
+  "homepage": "http://totoptech.github.io/github-graphql",
   "name": "github-graphql",
   "dependencies": {
     "@apollo/client": "^3.7.12",
@@ -19,7 +20,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "codegen:graphql": "graphql-codegen --require dotenv/config --config codegen.ts dotenv_config_path=.env"
+    "codegen:graphql": "graphql-codegen --require dotenv/config --config codegen.ts dotenv_config_path=.env",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -35,6 +38,7 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^3.3.0",
-    "@graphql-codegen/client-preset": "^3.0.0"
+    "@graphql-codegen/client-preset": "^3.0.0",
+    "gh-pages": "^5.0.0"
   }
 }
