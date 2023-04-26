@@ -13,8 +13,10 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n  query SearchUsers($query: String!) {\n    search(query: $query, type: USER, first: 10) {\n      nodes {\n        ... on User {\n          id\n          login\n          name\n        }\n      }\n    }\n  }\n": types.SearchUsersDocument,
-    "\n  query SearchRepos($query: String!) {\n    search(query: $query, type: REPOSITORY, first: 10) {\n      nodes {\n        ... on Repository {\n          id\n          name\n          url\n        }\n      }\n    }\n  }\n": types.SearchReposDocument,
+    "\n  query SearchUsers($query: String!, $after: String) {\n    search(query: $query, type: USER, first: 100, after: $after) {\n      pageInfo {\n        startCursor\n        hasNextPage\n        endCursor\n      }\n      userCount\n      nodes {\n        ... on User {\n          id\n          login\n          name\n          avatarUrl\n        }\n      }\n    }\n  }\n": types.SearchUsersDocument,
+    "\n  query SearchRepos($query: String!, $after: String) {\n    search(query: $query, type: REPOSITORY, first: 100, after: $after) {\n      pageInfo {\n        startCursor\n        hasNextPage\n        endCursor\n      }\n      repositoryCount\n      nodes {\n        ... on Repository {\n          id\n          name\n          url\n          nameWithOwner\n        }\n      }\n    }\n  }\n": types.SearchReposDocument,
+    "\n  query SearchUserByLogin($login: String!) {\n    user(login: $login) {\n      id\n      login\n      name\n      avatarUrl\n      bio\n    }\n  }\n": types.SearchUserByLoginDocument,
+    "\n  query SearchRepositoryByNameAndOwner($name: String!, $owner: String!) {\n    repository(name: $name, owner: $owner) {\n      id\n      name\n      url\n      nameWithOwner\n      description\n    }\n  }\n": types.SearchRepositoryByNameAndOwnerDocument,
 };
 
 /**
@@ -34,11 +36,19 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query SearchUsers($query: String!) {\n    search(query: $query, type: USER, first: 10) {\n      nodes {\n        ... on User {\n          id\n          login\n          name\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query SearchUsers($query: String!) {\n    search(query: $query, type: USER, first: 10) {\n      nodes {\n        ... on User {\n          id\n          login\n          name\n        }\n      }\n    }\n  }\n"];
+export function gql(source: "\n  query SearchUsers($query: String!, $after: String) {\n    search(query: $query, type: USER, first: 100, after: $after) {\n      pageInfo {\n        startCursor\n        hasNextPage\n        endCursor\n      }\n      userCount\n      nodes {\n        ... on User {\n          id\n          login\n          name\n          avatarUrl\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query SearchUsers($query: String!, $after: String) {\n    search(query: $query, type: USER, first: 100, after: $after) {\n      pageInfo {\n        startCursor\n        hasNextPage\n        endCursor\n      }\n      userCount\n      nodes {\n        ... on User {\n          id\n          login\n          name\n          avatarUrl\n        }\n      }\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query SearchRepos($query: String!) {\n    search(query: $query, type: REPOSITORY, first: 10) {\n      nodes {\n        ... on Repository {\n          id\n          name\n          url\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query SearchRepos($query: String!) {\n    search(query: $query, type: REPOSITORY, first: 10) {\n      nodes {\n        ... on Repository {\n          id\n          name\n          url\n        }\n      }\n    }\n  }\n"];
+export function gql(source: "\n  query SearchRepos($query: String!, $after: String) {\n    search(query: $query, type: REPOSITORY, first: 100, after: $after) {\n      pageInfo {\n        startCursor\n        hasNextPage\n        endCursor\n      }\n      repositoryCount\n      nodes {\n        ... on Repository {\n          id\n          name\n          url\n          nameWithOwner\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query SearchRepos($query: String!, $after: String) {\n    search(query: $query, type: REPOSITORY, first: 100, after: $after) {\n      pageInfo {\n        startCursor\n        hasNextPage\n        endCursor\n      }\n      repositoryCount\n      nodes {\n        ... on Repository {\n          id\n          name\n          url\n          nameWithOwner\n        }\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query SearchUserByLogin($login: String!) {\n    user(login: $login) {\n      id\n      login\n      name\n      avatarUrl\n      bio\n    }\n  }\n"): (typeof documents)["\n  query SearchUserByLogin($login: String!) {\n    user(login: $login) {\n      id\n      login\n      name\n      avatarUrl\n      bio\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query SearchRepositoryByNameAndOwner($name: String!, $owner: String!) {\n    repository(name: $name, owner: $owner) {\n      id\n      name\n      url\n      nameWithOwner\n      description\n    }\n  }\n"): (typeof documents)["\n  query SearchRepositoryByNameAndOwner($name: String!, $owner: String!) {\n    repository(name: $name, owner: $owner) {\n      id\n      name\n      url\n      nameWithOwner\n      description\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

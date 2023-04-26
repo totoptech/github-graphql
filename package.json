@@ -10,6 +10,7 @@
     "graphql": "^16.6.0",
     "react": "latest",
     "react-dom": "latest",
+    "react-router-dom": "^6.10.0",
     "react-scripts": "latest",
     "typescript": "latest"
   },

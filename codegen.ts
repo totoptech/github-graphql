@@ -1,7 +1,5 @@
 import { CodegenConfig } from "@graphql-codegen/cli";
 
-console.log("env", process.env.REACT_APP_GITHUB_TOKEN);
-
 const config: CodegenConfig = {
   schema: [
     {
